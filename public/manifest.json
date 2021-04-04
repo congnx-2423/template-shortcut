@@ -1,25 +1,30 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "description": "",
+  "short_name": "He he",
+  "name": "Template shortcut CW",
+  "icons": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+  },
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "Shortcut"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_scripts": [{
+     "matches": ["https://www.chatwork.com/*"],
+     "js": ["js/jquery.min.js", "js/content-scripts.js"]
+  }],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs"
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  }
 }
